@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #00F4FF;
+  --bg-secondary: #00D4E6;
+  --bg-tertiary: #00B4CC;
+  --orange-primary: #FF7A00;
+  --orange-secondary: #E66A00;
+  --orange-tertiary: #CC5A00;
+}
+
+/* Custom background gradients */
+.bg-custom-primary {
+  background: linear-gradient(135deg, #00F4FF 0%, #00D4E6 50%, #00B4CC 100%);
+}
+
+.bg-custom-secondary {
+  background: linear-gradient(135deg, #00D4E6 0%, #00B4CC 50%, #009BB3 100%);
+}
+
+.bg-custom-orange {
+  background: linear-gradient(135deg, #FF7A00 0%, #E66A00 50%, #CC5A00 100%);
+}
