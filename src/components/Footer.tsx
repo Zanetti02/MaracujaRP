@@ -1,6 +1,8 @@
 @@ .. @@
  const Footer: React.FC = () => {
    return (
+   )
+ }
 -    <footer className="bg-gradient-to-r from-emerald-800/80 to-teal-800/80 backdrop-blur-sm border-t border-teal-400/30 mt-12">
 +    <footer className="bg-gradient-to-r from-custom-cyan-800/80 to-custom-cyan-700/80 backdrop-blur-sm border-t border-custom-cyan-400/30 mt-12">
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

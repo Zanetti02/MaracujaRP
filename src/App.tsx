@@ -1,6 +1,8 @@
 @@ .. @@
    if (loading) {
      return (
+     )
+   }
 -      <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex items-center justify-center">
 +      <div className="min-h-screen bg-custom-gradient flex items-center justify-center">
          <div className="text-center">
@@ -12,6 +14,8 @@
 @@ .. @@
    if (error) {
      return (
+     )
+}
 -      <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 flex items-center justify-center">
 +      <div className="min-h-screen bg-custom-gradient flex items-center justify-center">
          <div className="text-center max-w-md mx-auto p-8">
@@ -27,7 +31,9 @@
            </button>
 @@ .. @@
    if (isAdminMode && currentAdmin) {
+           }
      return (
+     )
 -      <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-cyan-900 text-white">
 +      <div className="min-h-screen bg-custom-gradient text-white">
          <AdminDashboard 
