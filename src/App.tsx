@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header';
-import { Sidebar } from './components/Sidebar';
-import { MainContent } from './components/MainContent';
-import { Footer } from './components/Footer';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import MainContent from './components/MainContent';
+import Footer from './components/Footer';
 import { AdminDashboard } from './components/admin/AdminDashboard';
 import { RuleSection, Rule, AdminUser } from './types';
 import { fetchSections, fetchRules } from './lib/api';
