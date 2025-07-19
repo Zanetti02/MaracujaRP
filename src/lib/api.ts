@@ -522,4 +522,3 @@ export const adminAPI = {
     return logs || [];
   }
 }
-export { sectionsAPI, rulesAPI, adminAPI };
