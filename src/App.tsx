@@ -4,12 +4,12 @@ import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import AdminDashboard from './components/admin/AdminDashboard';
-import { RuleSection, Rule, AdminUser } from './types';
+import { RuleSection, AdminUser } from './types';
 import { sectionsAPI } from './lib/api';
 
 function App() {
   const [sections, setSections] = useState<RuleSection[]>([]);
-  const [selectedSection, setSelectedSection] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -25,6 +25,11 @@ function App() {
       const sectionsData = await sectionsAPI.getSections();
       
       setSections(sectionsData);
+      
+      // Set first section as active if none selected
+      if (sectionsData.length > 0 && !activeSection) {
+        setActiveSection(sectionsData[0].id);
+      }
     } catch (err) {
       console.error('Errore nel caricamento dei dati:', err);
       setError('Impossibile caricare i dati. Verifica la connessione a Supabase.');
@@ -36,6 +41,19 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  // Mock admin login function
+  const handleAdminClick = () => {
+    // Simple mock authentication
+    const mockAdmin: AdminUser = {
+      id: 'admin-1',
+      username: 'Developer',
+      role: 'admin',
+      lastLogin: new Date()
+    };
+    setCurrentAdmin(mockAdmin);
+    setIsAdminMode(true);
+  };
 
   if (loading) {
     return (
@@ -69,17 +87,16 @@ function App() {
 
   if (isAdminMode && currentAdmin) {
     return (
-      <div className="min-h-screen bg-custom-gradient text-white">
-        <AdminDashboard 
-          sections={sections}
-          setSections={setSections}
-          currentAdmin={currentAdmin}
-          onLogout={() => {
-            setIsAdminMode(false);
-            setCurrentAdmin(null);
-          }}
-        />
-      </div>
+      <AdminDashboard 
+        sections={sections}
+        setSections={setSections}
+        currentAdmin={currentAdmin}
+        onLogout={() => {
+          setIsAdminMode(false);
+          setCurrentAdmin(null);
+        }}
+        onRefresh={fetchData}
+      />
     );
   }
 
@@ -89,24 +106,21 @@ function App() {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         setSidebarOpen={setIsSidebarOpen}
-        onAdminLogin={(admin) => {
-          setCurrentAdmin(admin);
-          setIsAdminMode(true);
-        }}
+        onAdminClick={handleAdminClick}
       />
       
       <div className="flex">
         <Sidebar 
           sections={sections}
-          activeSection={selectedSection || ''}
-          setActiveSection={setSelectedSection}
+          activeSection={activeSection}
+          setActiveSection={setActiveSection}
           isOpen={isSidebarOpen}
           setIsOpen={setIsSidebarOpen}
         />
         
         <MainContent 
           sections={sections}
-          selectedSection={selectedSection}
+          activeSection={activeSection}
           searchTerm={searchTerm}
         />
       </div>

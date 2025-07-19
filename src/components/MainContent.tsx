@@ -10,6 +10,9 @@ interface MainContentProps {
 }
 
 const MainContent: React.FC<MainContentProps> = ({ sections, activeSection, searchTerm }) => {
+  // If no active section is set, use the first section
+  const currentActiveSection = activeSection || (sections.length > 0 ? sections[0].id : '');
+  
   // Se c'è un termine di ricerca, mostra i risultati filtrati
   if (searchTerm) {
     const filteredSections = sections.map(section => ({
@@ -93,7 +96,7 @@ const MainContent: React.FC<MainContentProps> = ({ sections, activeSection, sear
   }
 
   // Trova la sezione attiva
-  const currentSection = sections.find(section => section.id === activeSection);
+  const currentSection = sections.find(section => section.id === currentActiveSection);
 
   if (!currentSection) {
     return (

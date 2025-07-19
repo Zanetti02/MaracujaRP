@@ -23,3 +23,256 @@
 .bg-custom-orange {
   background: linear-gradient(135deg, #FF7A00 0%, #E66A00 50%, #CC5A00 100%);
 }
+
+/* Main gradient background */
+.bg-custom-gradient {
+  background: linear-gradient(135deg, #00F4FF 0%, #00D4E6 25%, #00B4CC 50%, #009BB3 75%, #008299 100%);
+  min-height: 100vh;
+}
+
+/* Orange gradient */
+.bg-orange-gradient {
+  background: linear-gradient(135deg, #FF7A00 0%, #E66A00 50%, #CC5A00 100%);
+}
+
+.bg-orange-gradient-reverse {
+  background: linear-gradient(135deg, #CC5A00 0%, #E66A00 50%, #FF7A00 100%);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 180, 204, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 122, 0, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 122, 0, 0.8);
+}
+
+/* Smooth transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Focus styles */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.5);
+}
+
+/* Custom prose styles for rule content */
+.prose {
+  max-width: none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #00F4FF;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+.prose ul,
+.prose ol {
+  margin: 1em 0;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+}
+
+.prose blockquote {
+  border-left: 4px solid #FF7A00;
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+  background: rgba(255, 122, 0, 0.1);
+  border-radius: 0 8px 8px 0;
+}
+
+.prose strong {
+  color: #FF7A00;
+  font-weight: 600;
+}
+
+.prose em {
+  color: #00D4E6;
+}
+
+.prose code {
+  background: rgba(0, 180, 204, 0.2);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Hover effects */
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 122, 0, 0.4);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Custom button styles */
+.btn-primary {
+  background: linear-gradient(135deg, #FF7A00 0%, #E66A00 50%, #CC5A00 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 122, 0, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #CC5A00 0%, #E66A00 50%, #FF7A00 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 122, 0, 0.4);
+}
+
+.btn-secondary {
+  background: rgba(0, 244, 255, 0.2);
+  color: #00F4FF;
+  border: 1px solid rgba(0, 244, 255, 0.3);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(0, 244, 255, 0.3);
+  border-color: rgba(0, 244, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Card styles */
+.card {
+  background: rgba(0, 180, 204, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 244, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 122, 0, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 122, 0, 0.2);
+}
+
+/* Text selection */
+::selection {
+  background: rgba(255, 122, 0, 0.3);
+  color: white;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .mobile-hidden {
+    display: none;
+  }
+  
+  .mobile-full {
+    width: 100%;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

@@ -5,7 +5,7 @@ interface HeaderProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
   setSidebarOpen: (open: boolean) => void;
-  onAdminClick?: () => void;
+  onAdminClick: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
