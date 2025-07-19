@@ -15,6 +15,7 @@ function App() {
   const [error, setError] = useState<string | null>(null);
   const [isAdminMode, setIsAdminMode] = useState(false);
   const [currentAdmin, setCurrentAdmin] = useState<AdminUser | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -87,6 +88,7 @@ function App() {
       <Header 
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
+        setSidebarOpen={setIsSidebarOpen}
         onAdminLogin={(admin) => {
           setCurrentAdmin(admin);
           setIsAdminMode(true);
@@ -96,8 +98,10 @@ function App() {
       <div className="flex">
         <Sidebar 
           sections={sections}
-          selectedSection={selectedSection}
-          onSectionSelect={setSelectedSection}
+          activeSection={selectedSection || ''}
+          setActiveSection={setSelectedSection}
+          isOpen={isSidebarOpen}
+          setIsOpen={setIsSidebarOpen}
         />
         
         <MainContent 
