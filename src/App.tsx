@@ -3,13 +3,12 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { AdminDashboard } from './components/admin/AdminDashboard';
+import AdminDashboard from './components/admin/AdminDashboard';
 import { RuleSection, Rule, AdminUser } from './types';
-import { fetchSections, fetchRules } from './lib/api';
+import { sectionsAPI } from './lib/api';
 
 function App() {
   const [sections, setSections] = useState<RuleSection[]>([]);
-  const [rules, setRules] = useState<Rule[]>([]);
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
@@ -22,13 +21,9 @@ function App() {
       setLoading(true);
       setError(null);
       
-      const [sectionsData, rulesData] = await Promise.all([
-        fetchSections(),
-        fetchRules()
-      ]);
+      const sectionsData = await sectionsAPI.getSections();
       
       setSections(sectionsData);
-      setRules(rulesData);
     } catch (err) {
       console.error('Errore nel caricamento dei dati:', err);
       setError('Impossibile caricare i dati. Verifica la connessione a Supabase.');
@@ -77,8 +72,6 @@ function App() {
         <AdminDashboard 
           sections={sections}
           setSections={setSections}
-          rules={rules}
-          setRules={setRules}
           currentAdmin={currentAdmin}
           onLogout={() => {
             setIsAdminMode(false);
@@ -109,7 +102,6 @@ function App() {
         
         <MainContent 
           sections={sections}
-          rules={rules}
           selectedSection={selectedSection}
           searchTerm={searchTerm}
         />

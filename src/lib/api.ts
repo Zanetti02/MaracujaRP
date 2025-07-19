@@ -520,7 +520,4 @@ export const adminAPI = {
     }
 
     return logs || [];
-  },
-};
-
-export default { sectionsAPI, rulesAPI, adminAPI };
+export { sectionsAPI, rulesAPI, adminAPI };
